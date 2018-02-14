@@ -1,7 +1,7 @@
 FROM golang
 
-ADD ./apigooglegeo.exe /usr/local/bin/
+ADD ./apidarksky.exe /usr/local/bin/
 
-ENTRYPOINT /usr/local/bin/apigooglegeo.exe
+ENTRYPOINT /usr/local/bin/apidarksky.exe
 
 EXPOSE 8090
