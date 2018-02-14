@@ -10,3 +10,8 @@ Docker Container
 https://hub.docker.com/r/magnustiberius/apidarksky/
 
 command: docker pull magnustiberius/apidarksky
+
+
+Dependent Microservices
+
+1. https://github.com/MagnusTiberius/weatherservice
