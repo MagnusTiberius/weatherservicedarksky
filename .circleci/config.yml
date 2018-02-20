@@ -35,7 +35,7 @@ jobs:
       #- run: go test -v ./...
       - run: go build -v  apidarksky/main.go
       - run: ls -l
-      - run: mv main.exe apidarksky.exe
+      - run: mv main apidarksky.exe
       - run: ls -l
       # docker build, login and push.
       - run: docker build -t "magnustiberius/apidarksky" .
