@@ -68,3 +68,5 @@ jobs:
       - run: gcloud config set account dev-854@weatherservice-195512.iam.gserviceaccount.com
       - run: gcloud config set project weatherservice-195512
       - run: gcloud docker -- push us.gcr.io/weatherservice-195512/apidarksky
+
+      - run: gcloud container images
