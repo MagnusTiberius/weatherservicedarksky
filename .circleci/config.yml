@@ -41,3 +41,10 @@ jobs:
       - run: docker build -t "magnustiberius/apidarksky" .
       - run: docker login -u=$DOCKER_USER -p=$DOCKER_PASS
       - run: docker push  magnustiberius/apidarksky
+
+      - run: docker build -t us.gcr.io/weatherservice-195512/apidarksky .
+      - run: gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+      - run: gcloud auth list
+      - run: gcloud config set account dev-854@weatherservice-195512.iam.gserviceaccount.com
+      - run: gcloud config set project weatherservice-195512
+      - run: gcloud docker -- push us.gcr.io/weatherservice-195512/apidarksky
