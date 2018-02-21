@@ -76,6 +76,6 @@ jobs:
       #- run: gcloud container clusters get-credentials gke-cluster-1-default-pool-5b13997f-tvc6 --zone us-central1-a --project weatherservice-195512
       - run: kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}"
 
-      #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
-      - run: kubectl create -f pod.yaml
+      - run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
+      #- run: kubectl create -f pod.yaml
       - run: kubectl get pods
