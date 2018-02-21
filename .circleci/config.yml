@@ -51,6 +51,8 @@ jobs:
 
       # specify any bash command here prefixed with `run: `
       - run: go version
+      - run: go get -v -t -d github.com/rs/cors
+      - run: go get -v -t -d github.com/gorilla/handlers
       - run: go get -v -t -d github.com/gorilla/mux
       #- run: go test -v ./...
       - run: go build -v  apidarksky/main.go
