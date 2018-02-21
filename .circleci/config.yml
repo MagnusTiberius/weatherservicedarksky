@@ -74,9 +74,9 @@ jobs:
       - run: gcloud container images list
       - run: gcloud compute instances list
       #- run: gcloud -q container clusters delete weather-cluster
-      - run: gcloud container clusters create weather-cluster --num-nodes=2
+      #- run: gcloud container clusters create weather-cluster --num-nodes=2
       - run: gcloud container clusters get-credentials weather-cluster
-      #- run: kubectl get pods
+      - run: kubectl get pods
       #- run: kubectl delete pods --all
       #- run: kubectl get pods
       #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
@@ -84,5 +84,5 @@ jobs:
       #- run: kubectl create -f pod.yml
       #- run: kubectl get pods
       #- run: kubectl create -f deployment.yml
-      #- run: kubectl get service
+      - run: kubectl get services
       #- run: kubectl expose deployment api-darksky --type=LoadBalancer --port 8090 --target-port 8090
