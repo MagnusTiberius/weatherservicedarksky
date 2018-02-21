@@ -1,0 +1,17 @@
+---
+ apiVersion: extensions/v1beta1
+ kind: Deployment
+ metadata:
+   name: api-darksky
+ spec:
+   replicas: 1
+   template:
+     metadata:
+       labels:
+         app: web
+     spec:
+       containers:
+         - name: apidarksky
+           image: us.gcr.io/weatherservice-195512/apidarksky
+           ports:
+             - containerPort: 8080

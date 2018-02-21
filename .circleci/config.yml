@@ -58,9 +58,9 @@ jobs:
       - run: mv main apidarksky.exe
       - run: ls -l
       # docker build, login and push.
-      - run: docker build -t "magnustiberius/apidarksky" .
-      - run: docker login -u=$DOCKER_USER -p=$DOCKER_PASS
-      - run: docker push  magnustiberius/apidarksky
+      #- run: docker build -t "magnustiberius/apidarksky" .
+      #- run: docker login -u=$DOCKER_USER -p=$DOCKER_PASS
+      #- run: docker push  magnustiberius/apidarksky
 
       - run: docker build -t us.gcr.io/weatherservice-195512/apidarksky .
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
@@ -75,7 +75,9 @@ jobs:
       - run: gcloud container clusters get-credentials weather-cluster
       #- run: gcloud container clusters get-credentials gke-cluster-1-default-pool-5b13997f-tvc6 --zone us-central1-a --project weatherservice-195512
       #- run: kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}"
-      - run: kubectl delete pod api-darksky
-      - run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
-      #- run: kubectl create -f pod.yaml
       - run: kubectl get pods
+      - run: kubectl delete pods --all
+      - run: kubectl get pods
+      #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
+      #- run: kubectl create -f pod.yaml
+      #- run: kubectl get pods
