@@ -79,7 +79,7 @@ jobs:
       #- run: kubectl delete pods --all
       #- run: kubectl get pods
       #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
-      - run: kubectl delete -f pod.yml
+      #- run: kubectl delete -f pod.yml
       - run: kubectl create -f pod.yml
       #- run: kubectl get pods
       - run: kubectl create -f deployment.yml
