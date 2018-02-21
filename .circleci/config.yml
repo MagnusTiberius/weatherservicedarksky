@@ -72,5 +72,5 @@ jobs:
       - run: gcloud container images list
       - run: gcloud compute instances list
 
-      - run: kubectl run hello-web --image=magnustiberius/apidarksky --port 8090
+      - run: kubectl run hello-web --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
       - run: kubectl get pods
