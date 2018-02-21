@@ -72,7 +72,8 @@ jobs:
       - run: gcloud container images list
       - run: gcloud compute instances list
 
-      - run: gcloud container clusters get-credentials gke-cluster-1-default-pool-5b13997f-tvc6 --zone us-central1-a --project weatherservice-195512
+      - run: gcloud container clusters get-credentials gke-cluster-1-default-pool-5b13997f-tvc6
+      #- run: gcloud container clusters get-credentials gke-cluster-1-default-pool-5b13997f-tvc6 --zone us-central1-a --project weatherservice-195512
       - run: kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}"
 
       - run: kubectl run hello-web --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
