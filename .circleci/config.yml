@@ -74,7 +74,7 @@ jobs:
       - run: gcloud container images list
       - run: gcloud compute instances list
       #- run: gcloud -q container clusters delete weather-cluster
-      #- run: gcloud container clusters create weather-cluster --num-nodes=2
+      - run: gcloud container clusters create weather-cluster --num-nodes=2
       - run: gcloud container clusters get-credentials weather-cluster
       #- run: kubectl get pods
       #- run: kubectl delete pods --all
