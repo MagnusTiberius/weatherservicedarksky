@@ -1,5 +1,9 @@
 # Weather Service For DarkSky
 
+**Demo**
+1. Weather data is at http://35.225.142.51:8090/address/Dallas%20TX/255589200
+2. User interface is at http://35.193.30.249:8088/
+
 **Build Status**
 
 [![CircleCI](https://circleci.com/gh/MagnusTiberius/weatherservicedarksky.svg?style=svg)](https://circleci.com/gh/MagnusTiberius/weatherservicedarksky)
