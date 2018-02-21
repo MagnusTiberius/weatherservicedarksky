@@ -7,7 +7,7 @@
 Please see .circleci/config.yml for details about the build.
 
 **Design**
-1. Receive address data
+1. Receive address and/or datetime data.
 2. Pass address data to Google Geo and receive a lat/lng information.
 3. Call DarkSky and pass lat/lng and(or) datetime data.
 4. Receive a json string and pass this back to caller in json format.
