@@ -71,3 +71,6 @@ jobs:
       - run: gcloud config set compute/zone us-central1-a
       - run: gcloud container images list
       - run: gcloud compute instances list
+
+      - run: kubectl run hello-web --image=magnustiberius/apidarksky --port 8090
+      - run: kubectl get pods
