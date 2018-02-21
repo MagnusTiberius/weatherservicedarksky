@@ -9,6 +9,7 @@ import (
 	"net/url"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 type AddressComponent struct {
@@ -52,7 +53,15 @@ func main() {
 	r.HandleFunc("/", IndexHandler)
 	r.HandleFunc("/address/{addr}", AddressHandler)
 	r.HandleFunc("/address/{addr}/{time}", AddressHandler)
-	http.ListenAndServe(":8090", r)
+
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:8088", "http://35.226.247.163:8088/"},
+		AllowCredentials: true,
+	})
+
+	handler := c.Handler(r)
+
+	http.ListenAndServe(":8090", handler)
 }
 
 type ResponseMessage struct {
