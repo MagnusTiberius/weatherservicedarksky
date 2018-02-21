@@ -51,6 +51,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", IndexHandler)
 	r.HandleFunc("/address/{addr}", AddressHandler)
+	r.HandleFunc("/address/{addr}/{time}", AddressHandler)
 	http.ListenAndServe(":8090", r)
 }
 
@@ -99,8 +100,13 @@ func AddressHandler(w http.ResponseWriter, r *http.Request) {
 		response := ResponseMessage{Message: ReturnValue{}, Code: 200}
 		JsonResponseWrite(w, response, 200)
 	}
+	tm := vars["time"]
+	if tm == "" {
+		log.Print("time undefined")
+	}
 
 	url := "https://maps.googleapis.com/maps/api/geocode/json?address=" + url.QueryEscape(addr) + "&key=AIzaSyC43h_g6FigjhSt3Y46oeqTu-Ydd24F5KI"
+
 	fmt.Printf("url:%s\n\n", url)
 	response, err := http.Get(url)
 	if err != nil {
@@ -130,8 +136,12 @@ func AddressHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("lng:%f\n\n", rv.Results[0].Geometry.Location.Lng)
 
 	dkey := "44881b03349f3f598dbd77b7eaeb215b"
-	urlDarkSky := fmt.Sprintf("https://api.darksky.net/forecast/%s/%f,%f", dkey, rv.Results[0].Geometry.Location.Lat, rv.Results[0].Geometry.Location.Lng)
-
+	urlDarkSky := ""
+	if tm == "" {
+		urlDarkSky = fmt.Sprintf("https://api.darksky.net/forecast/%s/%f,%f", dkey, rv.Results[0].Geometry.Location.Lat, rv.Results[0].Geometry.Location.Lng)
+	} else {
+		urlDarkSky = fmt.Sprintf("https://api.darksky.net/forecast/%s/%f,%f,%s", dkey, rv.Results[0].Geometry.Location.Lat, rv.Results[0].Geometry.Location.Lng, tm)
+	}
 	log.Printf("urlDarkSky:%s\n\n", urlDarkSky)
 
 	response, err = http.Get(urlDarkSky)
