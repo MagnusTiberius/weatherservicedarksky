@@ -6,6 +6,12 @@
 
 Please see .circleci/config.yml for details about the build.
 
+**Design**
+1. Receive address data
+2. Pass address data to Google Geo and receive a lat/lng information.
+3. Call DarkSky and pass lat/lng and(or) datetime data.
+4. Receive a json string and pass this back to caller in json format.
+
 **Docker Container**
 
 Each build will create a docker container which is packaged and sent to a Google Cloud project repo.
