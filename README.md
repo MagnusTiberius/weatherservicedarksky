@@ -1,4 +1,4 @@
-# weatherservicedarksky
+# Weather Service For DarkSky
 
 **Build Status**
 
