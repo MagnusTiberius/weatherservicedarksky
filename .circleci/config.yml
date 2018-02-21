@@ -54,9 +54,9 @@ jobs:
       - run: go get -v -t -d github.com/gorilla/mux
       #- run: go test -v ./...
       - run: go build -v  apidarksky/main.go
-      - run: ls -l
+      - run: ls -la
       - run: mv main apidarksky.exe
-      - run: ls -l
+      - run: ls -la
       # docker build, login and push.
       #- run: docker build -t "magnustiberius/apidarksky" .
       #- run: docker login -u=$DOCKER_USER -p=$DOCKER_PASS
@@ -76,8 +76,10 @@ jobs:
       #- run: gcloud container clusters get-credentials gke-cluster-1-default-pool-5b13997f-tvc6 --zone us-central1-a --project weatherservice-195512
       #- run: kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}"
       - run: kubectl get pods
-      - run: kubectl delete pods --all
-      - run: kubectl get pods
-      #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
-      #- run: kubectl create -f pod.yaml
+      #- run: kubectl delete pods --all
       #- run: kubectl get pods
+      #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
+      - run: kubectl delete -f pod.yml
+      - run: kubectl create -f pod.yml
+      #- run: kubectl get pods
+      - run: kubectl create -f deployment.yml
