@@ -29,24 +29,38 @@ jobs:
 
       - setup_remote_docker
 
+      # specify any bash command here prefixed with `run: `
       - run: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
-      - run: sudo apt-get install lsb-core
-      - run: lsb_release -c -s
-      - run: export LSB=$(lsb_release -c -s)
-      - run: export CLOUD_SDK_REPO1="cloud-sdk-stretch"
-      - run: echo $CLOUD_SDK_REPO1
-      - run: echo "deb http://packages.cloud.google.com/apt cloud-sdk-stretch main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-      - run: cat /etc/apt/sources.list.d/google-cloud-sdk.list
-      - run: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-      - run: sudo apt-get update && sudo apt-get install google-cloud-sdk kubectl
+      - run:
+          command: |
+            sudo apt-get install lsb-core
+            lsb_release -c -s
+            export CLOUD_SDK_REPO=$(lsb_release -c -s)
+            echo $CLOUD_SDK_REPO
+            echo "deb http://packages.cloud.google.com/apt cloud-sdk-${CLOUD_SDK_REPO} main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+            cat /etc/apt/sources.list.d/google-cloud-sdk.list
+            curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+      - run:
+          command: |
+            sudo apt-get update
+            sudo apt-get install google-cloud-sdk kubectl
 
       - run: which gcloud
 
       #- run: sudo gcloud --quiet components update
-      - run: sudo gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-      - run: sudo gcloud config set project weatherservice-195512
-      - run: sudo gcloud config set compute/zone us-central1-a
-      - run: sudo gcloud auth list
+      - run:
+          command: |
+            sudo gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+            sudo gcloud config set project weatherservice-195512
+            sudo gcloud config set compute/zone us-central1-a
+            sudo gcloud auth list
+
+      - run:
+          command: |
+            go version
+            go get -v -t -d github.com/rs/cors
+            go get -v -t -d github.com/gorilla/handlers
+            go get -v -t -d github.com/gorilla/mux
 
 
       # specify any bash command here prefixed with `run: `

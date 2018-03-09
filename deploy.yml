@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: apidarksky2
+  labels:
+    app: apidarksky2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apidarksky2
+  template:
+    metadata:
+      labels:
+        app: apidarksky2
+    spec:
+      containers:
+      - name: apidarksky2
+        image: us.gcr.io/weatherservice-195512/apidarksky
+        ports:
+        - containerPort: 8091

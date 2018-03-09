@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: apidarksky2
+spec:
+  selector:
+    app: apidarksky2
+  ports:
+  - protocol: TCP
+    port: 8091
+    targetPort: 8091
