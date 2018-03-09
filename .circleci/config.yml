@@ -60,7 +60,7 @@ jobs:
             go version
             go get -v -t -d github.com/rs/cors
             go get -v -t -d github.com/gorilla/handlers
-            go get -v -t -d github.com/gorilla/muxss
+            go get -v -t -d github.com/gorilla/mux
 
 
       # specify any bash command here prefixed with `run: `
