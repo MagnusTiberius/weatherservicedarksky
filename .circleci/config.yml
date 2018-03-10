@@ -91,7 +91,7 @@ jobs:
       #- run: gcloud container clusters create weather-cluster --num-nodes=2
       - run: gcloud container clusters get-credentials weather-cluster
       - run: kubectl get pods
-      #- run: kubectl create -f https://raw.githubusercontent.com/MagnusTiberius/weatherservicedarksky/master/deploy.yml
-      #- run: kubectl create -f https://raw.githubusercontent.com/MagnusTiberius/weatherservicedarksky/master/service.yml
+      - run: kubectl apply -f https://raw.githubusercontent.com/MagnusTiberius/weatherservicedarksky/master/deploy.yml
+      - run: kubectl apply -f https://raw.githubusercontent.com/MagnusTiberius/weatherservicedarksky/master/service.yml
       #- run: kubectl run api-darksky --image=us.gcr.io/weatherservice-195512/apidarksky --port 8090
       #- run: kubectl expose deployment api-darksky --type=LoadBalancer --port 8090 --target-port 8090
