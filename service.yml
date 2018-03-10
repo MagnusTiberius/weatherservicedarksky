@@ -1,10 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: apidarksky2
+  name: apidarksky2-svc
 spec:
   selector:
     app: apidarksky2
+  type: LoadBalancer
   ports:
   - protocol: TCP
     port: 8091

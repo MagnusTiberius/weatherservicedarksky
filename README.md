@@ -1,9 +1,9 @@
 # Weather Service For DarkSky
 
 **Demo**
-1. Weather data is at http://35.225.142.51:8090/address/Dallas%20TX/255589200
-                      http://35.225.142.51:8090/address/Seattle%20WA
-2. User interface is at http://35.193.30.249:8088/
+1. Weather data is at http://35.226.125.10:8091/address/Dallas%20TX/255589200
+                      http://35.226.125.10:8091/address/Seattle%20WA
+2. User interface is at http://104.154.21.68:8089/
 
 **Build Status**
 
